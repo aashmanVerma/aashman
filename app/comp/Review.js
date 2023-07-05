@@ -8,7 +8,7 @@ export default function Review() {
           Testimonials
         </span>
         </div>
-        <div className="flex flex-col justify-center gap-y-3 lg:flex-row gap-x-3">
+        <div className="flex flex-col justify-center items-center gap-y-3 lg:flex-row gap-x-3">
             <div className="text-center w-[19rem]">
                 <Card>
                     <CardHeader>
