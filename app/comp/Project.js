@@ -85,22 +85,22 @@ export default function Project() {
         <div className="max-w-[30rem]">
           <Card>
             <CardHeader>
-              <CardTitle>NGO website design</CardTitle>
+              <CardTitle>Website design</CardTitle>
               <CardDescription>Design</CardDescription>
             </CardHeader>
             <CardContent>
-              <Image alt="sweatlab" height={400} width={400} src="/ngo.png" />
+              <Image alt="sweatlab" height={400} width={400} src="/pay.png" />
               <p className="my-4">
-                A ngo website design task given by an organisation
+                PayE - Payroll Management Website design
               </p>
               <div className="flex gap-2 flex-wrap">
-                <Badge variant="secondary">ReactJS</Badge>
-                <Badge variant="secondary">TailwindCSS</Badge>
+                <Badge variant="secondary">Framer</Badge>
+                <Badge variant="secondary">Figma</Badge>
               </div>
             </CardContent>
             <CardFooter>
               <Button>
-                <a href="https://ngo-alpha.vercel.app/" target="_blank">
+                <a href="https://effortless-payroll-management.framer.ai/" target="_blank">
                   Visit
                 </a>
               </Button>
