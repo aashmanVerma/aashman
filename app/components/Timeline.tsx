@@ -69,11 +69,9 @@ export default function Timeline() {
         <div className="max-w-3xl w-full z-10 px-4 flex flex-col gap-y-3 my-10">
             <p className="text-xl font-medium text-left mb-10">Timeline ~</p>
 
-            <TracingBeam children={
+            <TracingBeam className='md:ml-12 mb-20'>
                 <TimelineProgress items={progress} />
-            }
-            className='md:ml-12 mb-20'
-            />
+            </TracingBeam>
         </div>
     )
 }
