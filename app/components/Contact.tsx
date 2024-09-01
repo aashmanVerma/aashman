@@ -13,7 +13,7 @@ const Contact = forwardRef<HTMLDivElement>((props, ref) => {
                     }
                 ]}
                 />
-                <p>Drop me a message at&nbsp;
+                <p className='flex flex-wrap'>Drop me a message at&nbsp;
                     <a href='mailto:vermaaashman16@gmail.com' className='underline-offset-2 underline'>vermaaashman16@gmail.com</a>
                     &nbsp;or&nbsp;
                     <a href='https://twitter.com/verma_aashman' className='underline-offset-2 underline'>twitter.com</a>
