@@ -2,12 +2,12 @@
 
 import About from "./components/About";
 import Contact from "./components/Contact";
-import Feedback from "./components/Feedback";
 import Header from "./components/Header";
 import { HeroText } from "./components/HeroText";
 import Image from "next/image";
 import Timeline from "./components/Timeline";
 import React, { useEffect, useRef, useState } from "react";
+import { Testimonials } from "./components/Testimonials";
 
 export default function Home() {
   const [section, setSection] = useState<string | null>(null)
@@ -29,7 +29,9 @@ export default function Home() {
   }, [section])
 
   return (
-    <div className="dark:text-black h-full w-full dark:bg-black bg-white dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative flex flex-col items-center justify-center">
+    <div className="dark:text-black h-full w-full dark:bg-black bg-white dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative flex flex-col items-center justify-center" style={{
+      color: 'black'
+    }}>
       {/* Radial gradient for the container to give a faded look */}
       <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
 
@@ -65,7 +67,7 @@ export default function Home() {
       <Timeline />
 
       {/* Testimonials section */}
-      <Feedback />
+      <Testimonials />
 
       {/* Acheivements section */}
 
