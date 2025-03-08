@@ -1,46 +1,31 @@
-"use client"
 
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Header from "./components/Header";
-import { HeroText } from "./components/HeroText";
 import Image from "next/image";
 import Timeline from "./components/Timeline";
-import React, { useEffect, useRef, useState } from "react";
 import { Testimonials } from "./components/Testimonials";
+import { getLinks } from "@/services/strapi/profile";
 
-export default function Home() {
-  const [section, setSection] = useState<string | null>(null)
-
-  const handleNavChange = (part: string) => [
-    setSection(part)
-  ]
-
-  const aboutRef = useRef(null)
-  const contactRef = useRef<HTMLDivElement>(null);
-  const projectRef = useRef(null)
-
-  useEffect(() => {
-    if (section === "about") {
-      (aboutRef.current! as any).scrollIntoView({ behavior: "smooth" })
-    } else if (section === "contact") {
-      (contactRef.current! as any).scrollIntoView({ behavior: "smooth" })
-    }
-  }, [section])
+export default async function Home() {
+  const links = await getLinks()
 
   return (
     <div className="dark:text-black h-full w-full dark:bg-black bg-white dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative flex flex-col items-center justify-center" style={{
       color: 'black'
     }}>
       {/* Radial gradient for the container to give a faded look */}
-      <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+      <div id="home" className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
 
-      <Header onNavChange={handleNavChange} />
+      <Header />
 
       {/* Hero section */}
-      <div className="flex justify-between w-full max-w-3xl my-10 lg:my-16 items-center flex-wrap flex-col-reverse md:flex-row">
+      <div className="flex justify-between max-w-3xl w-full my-10 lg:my-16 items-center flex-wrap flex-col-reverse md:flex-row">
         <div className="flex flex-col gap-y-4">
-          <HeroText main="FullStack Web Developer" text="Hi! I'm Aashman" />
+          <div className="flex flex-col gap-y-2 pl-4 relative z-20">
+            <h1 className="text-2xl font-medium">Hi! I&apos;m Aashman</h1>
+            <p>Software Developer</p>
+          </div>
           <div className="flex gap-x-3 px-4 my-5 mb-3">
             <span className="bg-[#222831] cursor-pointer px-3 py-2 rounded-lg text-white z-10">Resume</span>
             <span className="bg-[#222831] cursor-pointer px-3 py-2 rounded-lg text-white z-10">Cover letter</span>
@@ -57,11 +42,11 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <Image src="/pfp.jpeg" height={100} width={100} alt="profile pic" className="z-10 w-52 h-52 rounded-full mr-10" />
+        <Image src="/pfp.webp" height={100} width={100} alt="profile pic" className="z-10 w-52 h-52 rounded-full mr-10" />
       </div>
 
       {/* About section */}
-      <About ref={aboutRef} />
+      <About />
 
       {/* Timeline section */}
       <Timeline />
@@ -72,7 +57,7 @@ export default function Home() {
       {/* Acheivements section */}
 
       {/* Contacts section */}
-      <Contact ref={contactRef} />
+      <Contact />
 
     </div>
   );
