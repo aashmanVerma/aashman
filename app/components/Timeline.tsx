@@ -1,7 +1,6 @@
 import { TracingBeam } from "../ui/tracing-beam";
 import { getWorkHistory } from "@/services/strapi/works";
 import moment from "moment";
-import { Suspense } from "react";
 
 const TimelineContent = async () => {
   const data = await getWorkHistory();
@@ -19,7 +18,7 @@ const TimelineProgress = ({ items }: { items: Array<any> }) => {
       {items.length > 0
         ? items.map((item: any, idx: any) => {
             const fromDate = moment(item.from, 'YYYY-MM-DD').format('MMMM, YYYY');
-            const toDate = item.to ? moment(item.to, 'YYYY-MM-DD').format('YYYY-MM') : 'Present';
+            const toDate = item.to ? moment(item.to, 'YYYY-MM-DD').format('MMMM, YYYY') : 'Present';
             const duration = `${fromDate} - ${toDate}`;
 
             return (

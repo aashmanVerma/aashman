@@ -46,7 +46,7 @@ export default async function Home() {
       </div>
 
       {/* About section */}
-      <About />
+      <About skills={links.skills} />
 
       {/* Timeline section */}
       <Timeline />
