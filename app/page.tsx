@@ -6,6 +6,7 @@ import Timeline from "./components/Timeline";
 import { Testimonials } from "./components/Testimonials";
 import { getLinks } from "@/services/strapi/profile";
 import Hero from "./components/Hero";
+import Projects from "./components/Projects";
 
 export default async function Home() {
   const links = await getLinks()
@@ -31,7 +32,8 @@ export default async function Home() {
       {/* Testimonials section */}
       <Testimonials />
 
-      {/* Acheivements section */}
+      {/* Projects section */}
+      <Projects />
 
       {/* Contacts section */}
       <Contact />
