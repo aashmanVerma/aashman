@@ -11,21 +11,23 @@ import { Label } from "@/components/ui/label";
 import Autoplay from "embla-carousel-autoplay"
 import { useEffect, useState } from "react";
 
+import data from "@/app/data/feedback.json"
+
 export function Testimonials() {
-  const [data, setData] = useState<any[]>([])
+  // const [data, setData] = useState<any[]>([])
 
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await getFeedbacks()
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await getFeedbacks()
 
-      if (response.length) {
-        setData(response)
-      }
-    }
+  //     if (response.length) {
+  //       setData(response)
+  //     }
+  //   }
 
-    fetchData()
-  }, [])
+  //   fetchData()
+  // }, [])
 
   return (
     <div className="px-4 flex flex-col gap-y-8 w-full max-w-3xl" id="feedback">
