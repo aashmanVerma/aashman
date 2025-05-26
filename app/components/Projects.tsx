@@ -25,7 +25,7 @@ export default function Projects() {
               </a>
             </div>
             <p>It allows users to sketch ideas freely in a hand-drawn style right in their browser.</p>
-            <div className='flex gap-2'>
+            <div className='flex flex-wrap gap-2'>
               {
                 ["NextJS", "Clerk", "Excalidraw", "ShadCn", "TailwindCSS", "Supabase"].map((el, i) => <Badge key={i}>{el}</Badge>)
               }
