@@ -8,15 +8,15 @@ interface AboutProps {
 const About = forwardRef<HTMLDivElement, AboutProps>(({skills}, ref) => {
   return (
     <div className="max-w-3xl px-4 z-10 w-full" id="about">
-        <p className="text-xl font-medium">About Me ~</p>
+        <p className="text-xl font-medium text-[#1e3a5f]">About Me ~</p>
         <div className="flex justify-between items-center my-5 flex-wrap flex-col gap-y-3">
-            <p>I am a full stack developer skilled in building robust and scalable applications using technologies like Express JS, Hapi JS, and Node.js for backend development, and Next.js, Nuxt, and Tailwind CSS for frontend development. I manage data with MongoDB and PostgreSQL and utilize AWS S3 Buckets for storage. With expertise in version control through GitHub, I streamline operations with tools like Supabase and Strapi. My goal is to deliver high-quality, user-centric solutions, blending functionality with engaging design.</p>
+            <p className="text-[#2c4a6b]">I am a full stack developer skilled in building robust and scalable applications using technologies like Express JS, Hapi JS, and Node.js for backend development, and Next.js, Nuxt, and Tailwind CSS for frontend development. I manage data with MongoDB and PostgreSQL and utilize AWS S3 Buckets for storage. With expertise in version control through GitHub, I streamline operations with tools like Supabase and Strapi. My goal is to deliver high-quality, user-centric solutions, blending functionality with engaging design.</p>
             <div className="my-5 flex flex-col gap-y-2">
-                <div className="flex gap-2 justify-center flex-wrap">
+                <div className="flex gap-2 justify-start flex-wrap">
                     {
                         skills && skills.map((name: string, index: number) => (
-                            <Badge key={index} className="bg-[#222831] text-white px-3 py-2 rounded-lg flex items-center gap-x-2">
-                                <span>{name}</span>
+                            <Badge key={index} className="bg-[#1e3a5f]/15 backdrop-blur-sm text-[#1e3a5f] hover:bg-[#1e3a5f]/20 hover:border-[#1e3a5f]/40 transition-colors shadow-sm px-2.5 py-1.5 text-sm">
+                                {name}
                             </Badge>
                         ))
                     }

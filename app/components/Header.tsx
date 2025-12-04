@@ -14,7 +14,7 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="px-10 z-[101] top-3 py-4 rounded-lg text-white my-5 mx-4 flex justify-between items-center max-w-3xl w-[95%] bg-[#222831] bg-dot-transparent sticky ">
+    <div className="px-10 z-[101] top-3 py-4 rounded-xl text-[#1e3a5f] my-5 mx-4 flex justify-between items-center max-w-3xl w-[95%] bg-[#1e3a5f]/10 backdrop-blur-sm sticky shadow-lg shadow-[#1e3a5f]/10">
       av
       <div className="flex gap-x-6">
         <span className="cursor-pointer text-sm md:text-base" onClick={() => scrollToSection("about")}>About</span>

@@ -1,76 +1,91 @@
-import { TracingBeam } from "../ui/tracing-beam";
-import { getWorkHistory } from "@/services/strapi/works";
 import moment from "moment";
-
-const TimelineContent = async () => {
-  const data = await getWorkHistory();
-  
-  return (
-    <TracingBeam className="md:mx-12 mb-20 ">
-      {data && <TimelineProgress items={data as any} />}
-    </TracingBeam>
-  );
-};
-
-const TimelineProgress = ({ items }: { items: Array<any> }) => {
-  return (
-    <div className="flex flex-col gap-y-12 ml-10 md:ml-0">
-      {items.length > 0
-        ? items.map((item: any, idx: any) => {
-            const fromDate = moment(item.from, 'YYYY-MM-DD').format('MMMM, YYYY');
-            const toDate = item.to ? moment(item.to, 'YYYY-MM-DD').format('MMMM, YYYY') : 'Present';
-            const duration = `${fromDate} - ${toDate}`;
-
-            return (
-              <div className="flex flex-col gap-y-3" key={idx}>
-                <div className="flex flex-row items-center justify-between">
-                  <p className="text-lg font-medium">{duration}</p>
-                  {item.link && (
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-sm font-medium underline"
-                    >
-                      View
-                    </a>
-                  )}
-                </div>
-                <div className="flex flex-col gap-y-1">
-                  <p className="text-lg font-medium">
-                    {item.position}
-                    <br />
-                    <span className="px-2 py-1 rounded-md bg-[#222831] text-white text-xs">
-                      {item.type}
-                    </span>
-                  </p>
-                  <p className="text-sm font-normal mt-4">{item.description}</p>
-                  <div>
-                    {item.location && (
-                      <p className="text-sm inline font-normal bg-gray-300 px-2 py-1 rounded">
-                        {item.location}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </div>
-            );
-          })
-        : <p>No work history available</p>}
-    </div>
-  );
-};
+import { getWorkHistory } from "@/services/sanity/works";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 
 export default async function Timeline() {
     const data = await getWorkHistory()
 
     return (
         <div id="work" className="max-w-3xl w-full z-10 px-4 flex flex-col gap-y-3 my-10">
-            <p className="text-xl font-medium text-left mb-10">Timeline ~</p>
+            <div className="flex flex-col gap-y-2 mb-10">
+                <p className="text-xl font-medium text-left text-[#1e3a5f]">Timeline ~</p>
+                <p className="text-sm text-[#2c4a6b]">My professional journey</p>
+            </div>
 
-            <TracingBeam className='md:ml-12 mb-20'>
-                <TimelineProgress items={data} />
-            </TracingBeam>
+            <div className="flex flex-col gap-y-6">
+                {data.length > 0
+                    ? data.map((item: any, idx: number) => {
+                        const fromDate = moment(item.from, 'YYYY-MM-DD').format('MMMM, YYYY');
+                        const toDate = item.to ? moment(item.to, 'YYYY-MM-DD').format('MMMM, YYYY') : 'Present';
+                        const duration = `${fromDate} - ${toDate}`;
+
+                        return (
+                            <Card key={idx} className="bg-[#1e3a5f]/10 backdrop-blur-sm hover:border-[#1e3a5f]/30 transition-colors duration-300 shadow-sm">
+                                <CardContent className="p-6">
+                                    <div className="flex flex-col gap-y-4">
+                                        <div className="flex flex-row items-start justify-between gap-4">
+                                            <div className="flex items-start gap-3 flex-1">
+                                                <div className="flex-shrink-0 mt-1">
+                                                    {item.companyLogoUrl ? (
+                                                        <div className="w-12 h-12 rounded-lg overflow-hidden">
+                                                            <Image
+                                                                src={item.companyLogoUrl}
+                                                                alt={item.position || "Company logo"}
+                                                                width={48}
+                                                                height={48}
+                                                                className="w-full h-full object-cover"
+                                                            />
+                                                        </div>
+                                                    ) : (
+                                                        <div className="w-12 h-12 rounded-lg bg-[#1e3a5f]/20 backdrop-blur-sm flex items-center justify-center">
+                                                            <svg className="w-6 h-6 text-[#1e3a5f]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                                            </svg>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                <div className="flex flex-col gap-y-1 flex-1">
+                                                    <p className="text-lg font-medium text-[#1e3a5f]">
+                                                        {item.position}
+                                                    </p>
+                                                    <div className="flex flex-wrap items-center gap-2">
+                                                        <Badge className="bg-[#1e3a5f]/15 backdrop-blur-sm text-[#1e3a5f] hover:bg-[#1e3a5f]/20 hover:border-[#1e3a5f]/40 transition-colors shadow-sm">
+                                                            {item.type}
+                                                        </Badge>
+                                                        {item.location && (
+                                                            <Badge className="bg-[#1e3a5f]/15 backdrop-blur-sm text-[#1e3a5f] hover:bg-[#1e3a5f]/20 hover:border-[#1e3a5f]/40 transition-colors shadow-sm">
+                                                                {item.location}
+                                                            </Badge>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {item.link && (
+                                                <a
+                                                    href={item.link}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    className="text-sm font-medium underline text-[#1e3a5f] hover:text-[#2c4a6b] transition-colors flex-shrink-0"
+                                                >
+                                                    View
+                                                </a>
+                                            )}
+                                        </div>
+                                        <div className="flex flex-col gap-y-2">
+                                            <p className="text-sm font-medium text-[#2c4a6b]">{duration}</p>
+                                            <p className="text-sm font-normal text-[#2c4a6b] leading-relaxed">
+                                                {item.description}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        );
+                    })
+                    : <p className="text-[#2c4a6b]">No work history available</p>}
+            </div>
         </div>
     )
 }

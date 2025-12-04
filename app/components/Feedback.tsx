@@ -1,8 +1,12 @@
-import { getFeedbacks } from "@/services/strapi/feedback";
+import { config } from "../config";
 import { InfiniteMovingCards } from "../ui/infinite-moving-cards";
 
-export default async function Feedback() {
-    const feedbacks = await getFeedbacks()
+export default function Feedback() {
+    const feedbacks = config.feedback.map(item => ({
+      quote: item.description,
+      name: item.name,
+      title: item.company || ""
+    }))
 
   return (
     <div className="max-w-3xl w-full z-10 px-4 flex flex-col gap-y-3 my-10">
