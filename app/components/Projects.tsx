@@ -59,9 +59,9 @@ export default function Projects() {
                 ) : (
                   <p className="text-[#2c4a6b]">{project.description}</p>
                 )}
-                <div className='flex flex-wrap gap-2'>
+                <div className='flex flex-wrap gap-1.5'>
                   {project.technologies.map((tech: string, i: number) => (
-                    <Badge key={i} className="bg-[#1e3a5f]/15 backdrop-blur-sm text-[#1e3a5f] hover:bg-[#1e3a5f]/20 hover:border-[#1e3a5f]/40 transition-colors shadow-sm">{tech}</Badge>
+                    <Badge key={i} className="bg-gray-100 border border-gray-300 text-[#1e3a5f] hover:bg-gray-200 hover:border-gray-400 transition-all duration-200 shadow-sm text-xs font-normal px-2 py-0.5">{tech}</Badge>
                   ))}
                 </div>
               </CardHeader>

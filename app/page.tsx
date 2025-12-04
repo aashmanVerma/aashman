@@ -11,9 +11,9 @@ export default async function Home() {
   const links = await getProfile()
 
   return (
-    <div className="h-full w-full bg-[#FAF3E1] text-gray-900 relative flex flex-col items-center justify-center">
+    <div className="h-full w-full bg-[#FAFBFC] text-gray-900 relative flex flex-col items-center justify-center">
       {/* Radial gradient for the container to give a faded look */}
-      <div id="home" className="absolute pointer-events-none inset-0 flex items-center justify-center bg-[#FAF3E1] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+      <div id="home" className="absolute pointer-events-none inset-0 flex items-center justify-center bg-[#FAFBFC] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
 
       <Header />
       

@@ -50,12 +50,12 @@ export default async function Timeline() {
                                                     <p className="text-lg font-medium text-[#1e3a5f]">
                                                         {item.position}
                                                     </p>
-                                                    <div className="flex flex-wrap items-center gap-2">
-                                                        <Badge className="bg-[#1e3a5f]/15 backdrop-blur-sm text-[#1e3a5f] hover:bg-[#1e3a5f]/20 hover:border-[#1e3a5f]/40 transition-colors shadow-sm">
+                                                    <div className="flex flex-wrap items-center gap-1.5">
+                                                        <Badge className="bg-gray-100 border border-gray-300 text-[#1e3a5f] hover:bg-gray-200 hover:border-gray-400 transition-all duration-200 shadow-sm text-xs font-normal px-2 py-0.5">
                                                             {item.type}
                                                         </Badge>
                                                         {item.location && (
-                                                            <Badge className="bg-[#1e3a5f]/15 backdrop-blur-sm text-[#1e3a5f] hover:bg-[#1e3a5f]/20 hover:border-[#1e3a5f]/40 transition-colors shadow-sm">
+                                                            <Badge className="bg-gray-100 border border-gray-300 text-[#1e3a5f] hover:bg-gray-200 hover:border-gray-400 transition-all duration-200 shadow-sm text-xs font-normal px-2 py-0.5">
                                                                 {item.location}
                                                             </Badge>
                                                         )}
@@ -67,7 +67,7 @@ export default async function Timeline() {
                                                     href={item.link}
                                                     target="_blank"
                                                     rel="noreferrer"
-                                                    className="text-sm font-medium underline text-[#1e3a5f] hover:text-[#2c4a6b] transition-colors flex-shrink-0"
+                                                    className="text-sm mt-1 font-medium underline text-[#1e3a5f] hover:text-[#2c4a6b] transition-colors flex-shrink-0"
                                                 >
                                                     View
                                                 </a>
